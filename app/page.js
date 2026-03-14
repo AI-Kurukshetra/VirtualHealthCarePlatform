@@ -8,14 +8,14 @@ const modules = [
   { href: '/consultations', title: 'Video Consultation', description: 'Secure telehealth sessions using WebRTC/Twilio.' },
   { href: '/records', title: 'EHR', description: 'Medical records, clinical notes, and care history.' },
   { href: '/messages', title: 'Messaging', description: 'Secure patient-provider communication and alerts.' },
-  { href: '/billing', title: 'Billing & Claims', description: 'Billing events, insurance claims, and payment tracking.' }
+  // { href: '/billing', title: 'Billing & Claims', description: 'Billing events, insurance claims, and payment tracking.' }
 ];
 
 export default function HomePage() {
   return (
     <AppShell
       title='Virtual Health Platform'
-      subtitle='Production-ready, multi-tenant telehealth foundation built with Next.js + Supabase.'
+      subtitle=''
       actions={
         <Link
           href='/dashboard'

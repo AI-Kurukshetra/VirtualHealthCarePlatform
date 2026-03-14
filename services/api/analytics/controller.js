@@ -5,7 +5,8 @@ import { getRequestAuthContext } from '@/utils/request-auth-context';
 import analyticsService from './service';
 
 const querySchema = z.object({
-  organization_id: z.string().uuid().optional()
+  organization_id: z.string().uuid().optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(25)
 });
 
 const analyticsController = {
@@ -14,7 +15,7 @@ const analyticsController = {
       const authContext = await getRequestAuthContext(request);
       const query = Object.fromEntries(request.nextUrl.searchParams.entries());
       const parsed = querySchema.parse(query);
-      const data = await analyticsService.getKpis(parsed.organization_id || authContext.organizationId);
+      const data = await analyticsService.getKpis(parsed.organization_id || authContext.organizationId, parsed.limit);
       return successResponse(data);
     } catch (error) {
       if (error instanceof z.ZodError) {

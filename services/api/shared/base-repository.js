@@ -29,7 +29,7 @@ export function createBaseRepository(tableName, options = {}) {
   }
 
   return {
-    async list({ organization_id, limit = 25, offset = 0 }) {
+    async list({ organization_id, limit = 10, offset = 0 }) {
       return withErrorHandling(async () => {
         const supabase = getServerSupabaseClient();
         let query = supabase
